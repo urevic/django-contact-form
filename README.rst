@@ -71,5 +71,6 @@ Changelog
 * Added conf/settings.py
 * Added CONTACT_FORM_FROM_EMAIL, CONTACT_FORM_RECIPIENTS and CONTACT_FORM_FAIL_SILENTLY settings
 * A bit of code cleanup & documentation
-
+* Added site to email template context
+* Added French translations
 
