@@ -4,7 +4,8 @@ About
 An Extensible class based Contact Form.
 
 Fork of https://github.com/madisona/django-contact-form which is itself 
-a fork of "James Bennett's django-contact-form":https://bitbucket.org/ubernostrum/django-contact-form/
+a fork of James Bennett's django-contact-form: 
+https://bitbucket.org/ubernostrum/django-contact-form/
 
 
 Installation
@@ -64,8 +65,8 @@ Changelog
 2012-02-02
 ----------
 
- * Added conf/settings.py
- * Added CONTACT_FORM_FROM_EMAIL, CONTACT_FORM_RECIPIENTS and CONTACT_FORM_FAIL_SILENTLY settings
- * A bit of code cleanup & documentation
+* Added conf/settings.py
+* Added CONTACT_FORM_FROM_EMAIL, CONTACT_FORM_RECIPIENTS and CONTACT_FORM_FAIL_SILENTLY settings
+* A bit of code cleanup & documentation
 
 
