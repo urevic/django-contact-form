@@ -37,18 +37,20 @@ Add contact_form urls to your project urls.py::
 Using your own urls and views
 -----------------------------
 
-Create your contact views using the `ContactFormMixin`::
+Create your contact views subclassing the `ContactFormView`::
 
-    from django.views.generic import FormView
-    from contact_form.views import ContactFormMixin
+    from django.core.urlresolvers import reverse
+    from contact_form import views, forms
 
-    class ContactFormView(ContactFormMixin, FormView):
+    class ContactFormView(views.ContactFormView):
         template_name="my_site/contact.html",
-
+        form_class = forms.BasicContactForm
+        
         # If you want to change the success URL, just
         # override the get_success_url method
         def get_success_url(self):
             return reverse("my_site:contact_completed")
+
 
 Settings
 ========
@@ -58,6 +60,7 @@ All settings are optional.::
     CONTACT_FORM_FROM_EMAIL         default: settings.DEFAULT_FROM_EMAIL
     CONTACT_FORM_RECIPIENTS         default: settings.MANAGERS
     CONTACT_FORM_FAIL_SILENTLY      default: False
+
 
 Changelog
 =========
