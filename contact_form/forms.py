@@ -1,14 +1,15 @@
 
 from django import forms
-from django.conf import settings
 from django.core.mail.message import EmailMessage
 from django.template import loader
 from django.utils.translation import ugettext_lazy as _
 
+from contact_form.conf import settings
+
 
 class BaseEmailFormMixin(object):
-    from_email = settings.DEFAULT_FROM_EMAIL
-    recipient_list = [email for _, email in settings.MANAGERS]
+    from_email = settings.FROM_EMAIL
+    recipient_list = [email for _, email in settings.RECIPIENTS]
 
     subject_template_name = 'contact_form/email_subject.txt'
     message_template_name = 'contact_form/email_template.txt'
@@ -22,7 +23,7 @@ class BaseEmailFormMixin(object):
 
     def get_context(self):
         if not self.is_valid():
-            raise ValueError("Cannot generate Context when form is invalid.")
+            raise ValueError(_("Cannot generate Context when form is invalid."))
         return self.cleaned_data
 
     def get_message_dict(self):
@@ -33,7 +34,7 @@ class BaseEmailFormMixin(object):
             "body": self.get_message(),
         }
 
-    def send_email(self, request, fail_silently=False):
+    def send_email(self, request, fail_silently=settings.FAIL_SILENTLY):
         self.request = request
         EmailMessage(**self.get_message_dict()).send(fail_silently=fail_silently)
 

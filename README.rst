@@ -4,10 +4,68 @@ About
 An Extensible class based Contact Form.
 
 Fork of https://github.com/madisona/django-contact-form which is itself 
-a fork of James Bennett's django-contact-form
+a fork of "James Bennett's django-contact-form":https://bitbucket.org/ubernostrum/django-contact-form/
 
 
 Installation
 ============
 
- 1. Add `contact_form` to `INSTALLED_APPS` in `settings.py`
+Add `contact_form` to `INSTALLED_APPS` in `settings.py`
+
+
+Usage
+=====
+
+There is two way to use this app. You can either use the urls and views shipped with it or use your own.
+
+Using bundled urls and views
+----------------------------
+
+Add contact_form urls to your project urls.py::
+
+    from django.conf.urls.defaults import *
+    from django.contrib import admin
+
+    admin.autodiscover()
+
+    urlpatterns = patterns('',
+        (r'^admin/',     include(admin.site.urls)),
+        (r'^contact/',   include('contact_form.urls')),
+    )
+
+Using your own urls and views
+-----------------------------
+
+Create your contact views using the `ContactFormMixin`::
+
+    from django.views.generic import FormView
+    from contact_form.views import ContactFormMixin
+
+    class ContactFormView(ContactFormMixin, FormView):
+        template_name="my_site/contact.html",
+
+        # If you want to change the success URL, just
+        # override the get_success_url method
+        def get_success_url(self):
+            return reverse("my_site:contact_completed")
+
+Settings
+========
+
+All settings are optional.::
+
+    CONTACT_FORM_FROM_EMAIL         default: settings.DEFAULT_FROM_EMAIL
+    CONTACT_FORM_RECIPIENTS         default: settings.MANAGERS
+    CONTACT_FORM_FAIL_SILENTLY      default: False
+
+Changelog
+=========
+
+2012-02-02
+----------
+
+ * Added conf/settings.py
+ * Added CONTACT_FORM_FROM_EMAIL, CONTACT_FORM_RECIPIENTS and CONTACT_FORM_FAIL_SILENTLY settings
+ * A bit of code cleanup & documentation
+
+
