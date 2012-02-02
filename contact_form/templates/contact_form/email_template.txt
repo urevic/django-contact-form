@@ -1,9 +1,5 @@
-Hi there,
+A new contact request was submitted on {{ site }}.
 
-You have receive a contact request.
+From: {{ name }} <{{ email }}>
 
-Name: {{ name }}
-Email: {{ email }}
-Message: {{ body }}
-
-Have a great day!
+{{ body }}

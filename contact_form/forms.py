@@ -3,8 +3,11 @@ from django import forms
 from django.core.mail.message import EmailMessage
 from django.template import loader
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.sites.models import Site
 
 from contact_form.conf import settings
+ 
+site = Site.objects.get_current()
 
 
 class BaseEmailFormMixin(object):
@@ -24,6 +27,7 @@ class BaseEmailFormMixin(object):
     def get_context(self):
         if not self.is_valid():
             raise ValueError(_("Cannot generate Context when form is invalid."))
+        self.cleaned_data['site'] = site
         return self.cleaned_data
 
     def get_message_dict(self):
