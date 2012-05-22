@@ -18,7 +18,7 @@ class ContactFormMixin(object):
         return reverse("contact_form:completed")
 
 class ContactFormView(ContactFormMixin, FormView):
-    template_name="contact_form/contact.html",
+    template_name="contact_form/contact.html"
 
 class ContactModelFormView(ContactFormMixin, CreateView):
-    template_name="contact_form/contact.html",
+    template_name="contact_form/contact.html"
