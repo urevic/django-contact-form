@@ -65,6 +65,12 @@ All settings are optional.::
 Changelog
 =========
 
+2012-05-22
+----------
+
+* Small fixes (thanks mikek)
+* Added Russian translations (thanks mikek)
+
 2012-02-02
 ----------
 
