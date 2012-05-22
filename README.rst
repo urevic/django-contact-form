@@ -43,9 +43,9 @@ Create your contact views subclassing the `ContactFormView`::
     from contact_form import views, forms
 
     class ContactFormView(views.ContactFormView):
-        template_name="my_site/contact.html",
+        template_name="my_site/contact.html"
         form_class = forms.BasicContactForm
-        
+
         # If you want to change the success URL, just
         # override the get_success_url method
         def get_success_url(self):
