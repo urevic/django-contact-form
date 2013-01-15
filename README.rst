@@ -60,7 +60,7 @@ All settings are optional.::
     CONTACT_FORM_FROM_EMAIL         default: settings.DEFAULT_FROM_EMAIL
     CONTACT_FORM_RECIPIENTS         default: settings.MANAGERS
     CONTACT_FORM_FAIL_SILENTLY      default: False
-
+    CONTACT_FORM_SAVE_TO_DB         default: False
 
 Changelog
 =========
